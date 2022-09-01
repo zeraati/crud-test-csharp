@@ -21,4 +21,12 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infra\" />
+    <Folder Include="Interface\" />
+    <Folder Include="Mapper\" />
+    <Folder Include="Validation\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
+
 </Project>
