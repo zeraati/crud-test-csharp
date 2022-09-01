@@ -16,8 +16,10 @@ namespace Application
             RuleFor(x => x.FirstName).NotEmpty();
             RuleFor(x => x.LastName).NotEmpty();
             RuleFor(x => x).MustAsync((x, y) => FirstNameLastNameDateOfBirthMustUniq(x))
+                .OverridePropertyName("FirstName, LastName, DateOfBirth")
                 .WithMessage("FirstName, lastName and date of birth is not uniq.");
-            RuleFor(x => x).MustAsync((x, y) => EmailMustUniq(x)).WithMessage("Email is not uniq.");
+            RuleFor(x => x).MustAsync((x, y) => EmailMustUniq(x))
+                .OverridePropertyName("Email").WithMessage("Email is not uniq.");
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty()
                 .NotNull().WithMessage("Phone number is required.")
@@ -32,13 +34,15 @@ namespace Application
 
         private async Task<bool> FirstNameLastNameDateOfBirthMustUniq(CustomerDto customer)
         {
-            return !await _customers
+            var result = await _customers
                 .AnyAsync(x => x.FirstName == customer.FirstName && x.LastName == customer.LastName && x.DateOfBirth == customer.DateOfBirth && x.Id != customer.Id);
+            return !result;
         }
 
         private async Task<bool> EmailMustUniq(CustomerDto customer)
         {
-            return !await _customers.AnyAsync(x =>x.Email== customer.Email && x.Id != customer.Id);
+            var result = await _customers.AnyAsync(x => x.Email == customer.Email && x.Id != customer.Id);
+            return !result;
         }
     }
 }

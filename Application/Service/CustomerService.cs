@@ -1,4 +1,5 @@
 ﻿using DTO;
+using DAL;
 using System.Net;
 using Entity.Model;
 using Application.Infra;
@@ -15,7 +16,7 @@ namespace Application.Service
 
         public async Task<ServiceResponseDto> Add(CustomerDto dto)
         {
-            var validation = Validation.Validator(new CustomerValidator(db.Customer),dto);
+            var validation =await Validation.Validator(new CustomerValidator(db.Customer),dto);
             if (validation.StatusCode == (int)HttpStatusCode.BadRequest) return validation;
 
             var person = CustomerMapper.Map(dto);
@@ -28,7 +29,7 @@ namespace Application.Service
 
         public async Task<ServiceResponseDto> Edit(CustomerDto dto)
         {
-            var validation = Validation.Validator(new CustomerValidator(db.Customer), dto);
+            var validation =await Validation.Validator(new CustomerValidator(db.Customer), dto);
             if (validation.StatusCode == (int)HttpStatusCode.BadRequest) return validation;
 
             var person = await db.Customer.FirstAsync(x => x.Id == dto.Id);

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(x => { x.UseSqlServer(connectionString); });
+builder.Services.AddDbContext<DAL.ApplicationDbContext>(x => { x.UseSqlServer(connectionString); });
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

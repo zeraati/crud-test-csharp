@@ -6,11 +6,11 @@ namespace Application.Infra
 {
     public class Validation
     {
-        public static ServiceResponseDto Validator(IValidator validator, object model)
+        public static async Task<ServiceResponseDto> Validator(IValidator validator, object model)
         {
             var response= new ServiceResponseDto { };
 
-            var result = validator.Validate(new ValidationContext<object>(model));
+            var result =await validator.ValidateAsync(new ValidationContext<object>(model));
             if (result.IsValid) return new ServiceResponseDto { };
 
             var errors = result.Errors.GroupBy(x => x.PropertyName).Select(x => new 

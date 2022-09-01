@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entity.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Entity.Model
+namespace DAL
 {
     public partial class ApplicationDbContext : DbContext
     {
@@ -22,8 +23,6 @@ namespace Entity.Model
         {
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.BankAccountNumber).HasMaxLength(50);
 
                 entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
