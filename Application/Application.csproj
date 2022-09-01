@@ -24,10 +24,10 @@
 
   <ItemGroup>
     <Folder Include="Infra\" />
-    <Folder Include="Service\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
     <ProjectReference Include="..\DTO\DTO.csproj" />
     <ProjectReference Include="..\Entity\Entity.csproj" />
   </ItemGroup>
