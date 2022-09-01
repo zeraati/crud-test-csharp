@@ -2,7 +2,7 @@
 
 namespace DTO
 {
-    public class ServiceResponseDTO
+    public class ServiceResponseDto
     {
         public int StatusCode { get; set; } = (int)HttpStatusCode.OK;
         public string? Message { get; set; }
