@@ -9,8 +9,8 @@ namespace Application.Mapper
         {
             model ??= new Customer();
             model.Id = dto.Id;
-            model.FirstName = dto.Firstname;
-            model.LastName = dto.Lastname;
+            model.FirstName = dto.FirstName;
+            model.LastName = dto.LastName;
             model.PhoneNumber = dto.PhoneNumber;
             model.DateOfBirth = dto.DateOfBirth;
             model.Email = dto.Email;
@@ -24,8 +24,8 @@ namespace Application.Mapper
             {
 
                 Id = model.Id,
-                Firstname = model.FirstName,
-                Lastname = model.LastName,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
                 FullName = $"{model.FirstName} {model.LastName}",
                 PhoneNumber = model.PhoneNumber,
                 DateOfBirth = model.DateOfBirth,
