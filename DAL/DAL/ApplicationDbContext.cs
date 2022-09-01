@@ -1,7 +1,9 @@
-﻿using Entity.Model;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace DAL
+namespace Entity.Model
 {
     public partial class ApplicationDbContext : DbContext
     {
@@ -28,9 +30,9 @@ namespace DAL
 
                 entity.Property(e => e.Email).HasMaxLength(50);
 
-                entity.Property(e => e.Firstname).HasMaxLength(300);
+                entity.Property(e => e.FirstName).HasMaxLength(300);
 
-                entity.Property(e => e.Lastname).HasMaxLength(300);
+                entity.Property(e => e.LastName).HasMaxLength(300);
 
                 entity.Property(e => e.PhoneNumber).HasMaxLength(50);
             });
