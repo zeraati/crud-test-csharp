@@ -3,11 +3,12 @@ using System.Net;
 using Entity.Model;
 using Application.Infra;
 using Application.Mapper;
+using Application.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Service
 {
-    public class CustomerService
+    public class CustomerService:ICustomerService
     {
         private readonly ApplicationDbContext db;
         public CustomerService(ApplicationDbContext db) => this.db = db;
